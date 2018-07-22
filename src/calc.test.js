@@ -1,7 +1,7 @@
-var add = require('./calc.js')
+import {add} from './calc'
 
-describe('calculator', function() {
-	it('add two numbers', function() {
+describe('calculator', () => {
+	it('add two numbers', () => {
 		expect(add(1, 2)).toEqual(3)
 	})
 })
