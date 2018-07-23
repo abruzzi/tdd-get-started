@@ -1,20 +1,23 @@
 const convert = (c) => {
   switch (c) {
     case 'd':
-      return 0.5
+      return {status: 'Dev', effort: 0.5}
     case 'D':
-      return 1.0
+      return {status: 'Dev', effort: 1.0}
+    case 'q':
+      return {status: 'QA', effort: 0.5}
     default:
-      return 0.0
+      return {status: 'Unknown', effort: 0.0}
   }
 }
 
 const translate = (input) => {
   const items = input.split('')
   return items.reduce((accumulator, current) => {
-    accumulator += convert(current)
+    const {status, effort} = convert(current)
+    accumulator[status] = (accumulator[status] || 0) + effort
     return accumulator
-  }, 0)
+  }, {})
 }
 
 export { translate }
