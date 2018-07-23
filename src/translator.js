@@ -1,10 +1,20 @@
-const translate = (input) => {
-	const items = input.split('')
-	let sum = 0
-	items.forEach((item) => {
-		sum += (item === 'd') ? 0.5 : 1.0
-	})
-	return sum
+const convert = (c) => {
+  switch (c) {
+    case 'd':
+      return 0.5
+    case 'D':
+      return 1.0
+    default:
+      return 0.0
+  }
 }
 
-export {translate}
+const translate = (input) => {
+  const items = input.split('')
+  return items.reduce((accumulator, current) => {
+    accumulator += convert(current)
+    return accumulator
+  }, 0)
+}
+
+export { translate }
