@@ -1,13 +1,30 @@
 const convert = (c) => {
   switch (c) {
     case 'd':
-      return {status: 'Dev', effort: 0.5}
+      return {
+        status: 'Dev',
+        effort: 0.5
+      }
     case 'D':
-      return {status: 'Dev', effort: 1.0}
+      return {
+        status: 'Dev',
+        effort: 1.0
+      }
     case 'q':
-      return {status: 'QA', effort: 0.5}
+      return {
+        status: 'QA',
+        effort: 0.5
+      }
+    case 'Q':
+      return {
+        status: 'QA',
+        effort: 1.0
+      }
     default:
-      return {status: 'Unknown', effort: 0.0}
+      return {
+        status: 'Unknown',
+        effort: 0.0
+      }
   }
 }
 

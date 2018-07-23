@@ -9,11 +9,15 @@ describe('translator', () => {
 		expect(translate('D')).toEqual({'Dev': 1.0})
 	})
 
-	it('translate dd to one dev day', () => {
+	it('translate dD to one and a half dev day', () => {
 		expect(translate('dD')).toEqual({'Dev': 1.5})
 	})
 
 	it('translate q to half qa day', () => {
 		expect(translate('q')).toEqual({'QA': 0.5})
+	})
+
+	it('translate qQ to half qa day', () => {
+		expect(translate('qQ')).toEqual({'QA': 1.5})
 	})
 })
