@@ -5,7 +5,23 @@ describe('matchers', () => {
   })
 
   describe('string', () => {
+    it('match strings', () => {
+      expect('hello').toEqual('hello')
+    })
 
+    it('match regular expression', () => {
+      expect('juntao').toMatch(/\w+/)
+    })
+
+    it('match numbers', () => {
+      expect('185-3345-3343').toMatch(/^\d{3}-\d{4}-\d{4}$/)
+      expect('1853-3345-3343').not.toMatch(/^\d{3}-\d{4}-\d{4}$/)
+    })
+
+    it('string contains', () => {
+      const givenName = expect.stringContaining('Juntao')
+      expect('Juntao Qiu').toEqual(givenName)
+    })
   })
 
   describe('object', () => {
@@ -52,4 +68,6 @@ describe('matchers', () => {
       expect(users).toEqual(usetSet)
     })
   })
+
+
 })
