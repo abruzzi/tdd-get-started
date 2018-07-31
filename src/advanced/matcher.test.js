@@ -70,4 +70,23 @@ describe('matchers', () => {
   })
 
 
+  describe('bring them together', () => {
+    const user = {
+      name: 'Juntao Qiu',
+      address: 'Xian, Shaanxi, China',
+      projects: [
+        { name: 'ThoughtWorks University' },
+        { name: 'ThoughtWorks Core Buiness Beach'}
+      ]
+    }
+
+    const matcher = expect.objectContaining({
+      name: expect.stringContaining('Juntao'),
+      projects: expect.arrayContaining([
+        { name: expect.stringContaining('ThoughtWorks') }
+      ])
+    })
+
+    expect(user).toEqual(matcher)
+  })
 })
