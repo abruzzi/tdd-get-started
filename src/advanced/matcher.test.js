@@ -1,12 +1,33 @@
 describe('matchers', () => {
-  it('match numbers', () => {
-    const v = 1 + 1
-    expect(v).toEqual(2)
+  describe('numbers', () => {
+    it('match numbers', () => {
+      const v = 1 + 1
+      expect(v).toEqual(2)
+    })
+
+    it('compare numbers', () => {
+      expect(1+2).toBeGreaterThan(2)
+      expect(1+2).toBeGreaterThanOrEqual(2)
+
+      expect(1+2).toBeLessThan(4)
+      expect(1+2).toBeLessThanOrEqual(4)
+    })
   })
+  
+  it('basic usage', () => {
+    expect(1+1).toEqual(2)
+    expect('Juntao').toEqual('Juntao')
+    expect({ name: 'Juntao' }).toEqual({ name: 'Juntao' })
+  })
+
 
   describe('string', () => {
     it('match strings', () => {
       expect('hello').toEqual('hello')
+    })
+
+    it('contains', () => {
+      expect('Juntao Qiu').toContain('Juntao')
     })
 
     it('match regular expression', () => {
@@ -23,6 +44,7 @@ describe('matchers', () => {
       expect('Juntao Qiu').toEqual(givenName)
     })
   })
+
 
   describe('object', () => {
     it('match object', () => {
@@ -63,6 +85,14 @@ describe('matchers', () => {
       expect(users.length).toBeGreaterThan(2)
     })
 
+    it('object in array', () => {
+      const users = [
+        { name: 'Juntao' },
+        { name: 'Alex' }
+      ]
+      expect(users).toContainEqual({ name: 'Juntao' })
+    })
+
     it('array containing', () => {
       const usetSet = expect.arrayContaining(['Juntao', 'Abruzzi'])
       expect(users).toEqual(usetSet)
@@ -88,5 +118,19 @@ describe('matchers', () => {
     })
 
     expect(user).toEqual(matcher)
+  })
+
+  describe('mock', () => {
+    it('create a callable function', () => {
+      const mock = jest.fn()
+      mock('Juntao')
+      expect(mock).toHaveBeenCalled()
+      expect(mock).toHaveBeenCalledWith('Juntao')
+      expect(mock).toHaveBeenCalledTimes(1)
+    })
+
+    it('mock', () => {
+      
+    })
   })
 })
